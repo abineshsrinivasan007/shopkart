@@ -1,0 +1,54 @@
+{% extends 'shop/layout/main.html' %}
+
+{% block title %}
+Register
+{% endblock title %}
+
+{% block content %}
+<section class="py-4 my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="register-title">New User Registration</h1>
+        <hr style="border-color:#b8bfc2;margin-bottom:50px">
+        {% include 'shop/inc/message.html' %}
+      </div>
+      <div class="col-6">
+        <form method="POST" action="">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label for="" class="form-label">User Name</label>
+            {{ form.username }}
+            {% if form.errors.username %}
+                <label for="" class="text-danger">{{ form.errors.username }}</label>
+            {% endif %}
+          </div>
+          <div class="mb-4">
+            <label for="" class="form-label">Email</label>
+            {{ form.email }}
+            {% if form.errors.email %}
+                <label for="" class="text-danger">{{ form.errors.email }}</label>
+            {% endif %}
+          </div>
+          <div class="mb-4">
+            <label for="" class="form-label">Password</label>
+            {{ form.password1 }}
+            {% if form.errors.password1 %}
+                <label for="" class="text-danger">{{ form.errors.password1 }}</label>
+            {% endif %}
+          </div>
+          <div class="mb-4">
+            <label for="" class="form-label">Confirm Password</label>
+            {{ form.password2 }}
+            {% if form.errors.password2 %}
+                <label for="" class="text-danger">{{ form.errors.password2 }}</label>
+            {% endif %}
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        <p class="my-2">Already a user? <a href="{% url 'login' %}">Login Now</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

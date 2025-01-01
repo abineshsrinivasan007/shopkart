@@ -1,0 +1,132 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+#carouselExampleIndicators {
+    height: 560px; /* Set the height of the carousel */
+    overflow: hidden; /* Hide overflow */
+    position: relative; /* Enable positioning for overlay */
+  }
+
+  .carousel-item {
+    height: 100%; /* Set the carousel item to fill the carousel height */
+    position: relative; /* Position relative to enable absolute positioning for overlay */
+  }
+
+  .carousel-item img {
+    width: 100%; /* Make the image take the full width */
+    height: 100%; /* Make the image take the full height */
+    object-fit: cover; /* Cover the area while maintaining aspect ratio */
+    
+  }
+
+  .carousel-item .overlay {
+    position: absolute; /* Position it over the image */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    z-index: 1; /* Ensure overlay is above the image */
+  }
+
+  .carousel-caption {
+    position: absolute; /* Optional: Positioning for captions */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Set caption color */
+    z-index: 2; /* Ensure caption is above overlay */
+  }
+  .old-price{
+font-weight: bold;
+color: red;
+  }
+  .new-price{
+font-weight: bold;
+background-color: green;
+color:white;
+padding: 3px;
+border-radius: 5px;
+  }
+  .navbar {
+    background-color: #2c3e50; /* Dark navy color */
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for brand logo */
+.navbar-brand {
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f8f9fa;
+}
+
+/* Navbar item style */
+.navbar-nav .nav-item {
+    margin-left: 15px;
+    font-size: 1.1rem;
+}
+
+/* Navbar link style with hover effect */
+.navbar-nav .nav-link {
+    color: #f8f9fa;
+    padding: 10px;
+    position: relative;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f39c12; /* Golden hover effect */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+
+/* Highlight the active link */
+.navbar-nav .nav-item.active .nav-link {
+    color: #f39c12;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+
+/* Smooth hover animation for icons */
+.navbar-nav .nav-link i {
+    transition: transform 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover i {
+    transform: scale(1.1);
+}
+
+/* Navbar brand hover effect */
+.navbar-brand:hover {
+    color: #f39c12;
+    transition: color 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+}
+
+.pic-box{
+position: relative;
+}
+.hot {
+  background-color: orangered;
+  color: white;
+  width: 75px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  border-radius: 8px;
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  right: 13px;
+  z-index: 10;
+  line-height: 1.5; /* Adjust this value based on the element's height */
+}

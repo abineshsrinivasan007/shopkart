@@ -1,0 +1,85 @@
+{% extends 'shop/layout/main.html' %}
+
+{% block title %}
+  Cart | ShopKart
+{% endblock title %}
+
+{% block content %}
+  <section class="bg-light py-4 my-5" style="min-height:600px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mb-3">Cart Items</h4>
+                <hr style="border-color:#b8bfc2;">
+            </div>
+
+            {% if cart %}
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart %}
+                                <tr>
+                                   <td>
+                                       {% if item.product.product_image %}
+                                           <img src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}" height="75px">
+                                       {% else %}
+                                           <img src="/path/to/default/image.jpg" alt="No image available" height="75px">
+                                       {% endif %}
+                                   </td>
+                                    <td>{{ item.product.name }}</td>
+                                    <td>{{ item.product.selling_price | stringformat:'d' }}</td>
+                                    <td>{{ item.product_qty }}</td>
+                                    <td class="amt">{{ item.total_cost | stringformat:'d' }}</td>
+                                    <td>
+                                        <a href="{% url 'remove_cart' item.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure? to remove')">
+                                      
+                                            <i class="fa fa-trash"></i> Remove
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td colspan="2">Total Amount</td>
+                                <td id="net" colspan="1">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="col-12">
+                    <p>Your cart is empty.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Select all amount elements in the cart
+      const nodes = document.querySelectorAll('.amt');
+      const arr = Array.from(nodes);
+
+      // Calculate the total amount
+      const totalAmount = arr.reduce((acc, curr) => {
+          return acc += Number(curr.textContent);  // Remove 'Rs.' and convert to number
+      }, 0);
+
+      // Update the total amount in the 'net' element
+      document.getElementById('net').innerHTML = 'Rs: ' + totalAmount;  // Ensure two decimal points
+    });
+  </script>
+{% endblock content %}
